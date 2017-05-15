@@ -8,7 +8,7 @@ class Ball {
   int state;
 
   Ball() {
-    intrandom(256);
+    float r = random(256);
     float g = random(256);
     float b = random(256);
     c = color(r, g, b);
@@ -26,10 +26,10 @@ class Ball {
   }
   
   void bounce() {
-    if ( x == 0 || x == ((width - rad) + rad/2)){
+    if ( x <= 0 || x >= ((width - rad) + rad/2)){
       dx = -dx;
     }
-    if ( y == 0 || y == ((height - rad) + rad/2)){
+    if ( y <= 0 || y >= ((height - rad) + rad/2)){
       dy = -dy;
     }
   }

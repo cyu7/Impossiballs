@@ -15,7 +15,8 @@ void draw() {
   background(0);
 
   for (int i=0; i < balls.length; i++) {
-    fill(balls[i].r, balls[i].g, balls[i].b);
+    // fill(balls[i].r, balls[i].g, balls[i].b);
+    fill(balls[i].c);
     ellipse(balls[i].x, balls[i].y, balls[i].rad, balls[i].rad);
     balls[i].move();
   }
