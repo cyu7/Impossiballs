@@ -17,19 +17,30 @@ class Ball {
     y = random((height - rad) + rad/2);
     dx = random(10) - 5;
     dy = random(10) - 5;
+    state = 0;
   }
 
   void move() {
-    x = x + dx;
-    y = y + dy;
-    bounce();
+    if (state == 0)
+    {
+      x = x + dx;
+      y = y + dy;
+      bounce();
+    } else if (state == 1)
+    {
+      if (rad > 100)
+        state++;
+      else
+        rad++;
+    } else if ( rad > 0 )
+      rad--;
   }
-  
+
   void bounce() {
-    if ( x <= 0 || x >= ((width - rad) + rad/2)){
+    if ( x <= 0 || x >= ((width - rad) + rad/2)) {
       dx = -dx;
     }
-    if ( y <= 0 || y >= ((height - rad) + rad/2)){
+    if ( y <= 0 || y >= ((height - rad) + rad/2)) {
       dy = -dy;
     }
   }
