@@ -29,7 +29,7 @@ void draw() {
           // Use distance formula to calculate if the balls are touching:
           && sqrt( pow( balls[i + j].x - balls[i].x, 2 )
           + pow( balls[i + j].y - balls[i].y, 2 ) )
-          < balls[i].rad + balls[i+j].rad )
+          <= balls[i].rad + balls[i+j].rad )
         {
           // Make the balls react
           balls[i].state++;
