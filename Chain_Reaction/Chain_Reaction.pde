@@ -20,25 +20,30 @@ void draw() {
     ellipse(balls[i].x, balls[i].y, balls[i].rad, balls[i].rad);
     balls[i].move();
 
-    /* does not work because it causes the program to crash:
+    int ctr = 0; // so that you don't check the same two balls twice
     if ( reactionStarted ) {
-      int ctr = 0; // so that you don't check the same two balls twice
       for (int j = 0; j < balls.length - ctr; j++) {
-        // if one of the balls is reacting:
-        if ( ( balls[i].state > 0 || balls[i + j].state > 0 )
+        int compareIndex = (i + j) % balls.length;
+        // if one of the two balls is reacting:
+        if ( ( balls[i].state > 0 || balls[compareIndex].state > 0 )
+
+        /*
           // Use distance formula to calculate if the balls are touching:
-          && sqrt( pow( balls[i + j].x - balls[i].x, 2 )
-          + pow( balls[i + j].y - balls[i].y, 2 ) )
-          <= balls[i].rad + balls[i+j].rad )
+         && sqrt( pow( balls[i + j].x - balls[i].x, 2 )
+         + pow( balls[i + j].y - balls[i].y, 2 ) )
+         <= balls[i].rad + balls[i+j].rad )
+         */
+
+          && dist( balls[i].x, balls[i].y, balls[compareIndex].x, balls[compareIndex].y )
+          <= balls[i].rad + balls[compareIndex].rad ) // and the balls are touching
         {
           // Make the balls react
           balls[i].state++;
-          balls[i + j].state++;
+          balls[compareIndex].state++;
         }
-        ctr++;
       }
     }
-    */
+    ctr++;
   }
 }
 
